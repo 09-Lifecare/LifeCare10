@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile - LifeCare</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Montserrat:wght@600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/profile.css">
+</head>
+<body>
+    <div class="profile-container">
+        <header class="profile-header">
+            <h1>User Profile</h1>
+            <a href="dashboard.html" class="btn btn-secondary">Back to Dashboard</a>
+        </header>
+
+        <main class="profile-main">
+            <div class="profile-card">
+                <div class="profile-avatar">
+                    <div class="avatar-placeholder">👤</div>
+                </div>
+
+                <form id="profileForm" class="profile-form">
+                    <div class="form-group">
+                        <label for="profileName">Full Name:</label>
+                        <input type="text" id="profileName" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="profileNickname">Nickname:</label>
+                        <input type="text" id="profileNickname" placeholder="How should we call you?">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="profileEmail">Email:</label>
+                        <input type="email" id="profileEmail" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="profileRole">Role:</label>
+                        <input type="text" id="profileRole" readonly>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="profilePhone">Phone Number:</label>
+                        <input type="tel" id="profilePhone">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="profileBio">Bio:</label>
+                        <textarea id="profileBio" rows="4" placeholder="Tell us about yourself..."></textarea>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-primary">Save Changes</button>
+                        <button type="reset" class="btn btn-secondary">Cancel</button>
+                    </div>
+                </form>
+
+                <div class="profile-actions">
+                    <h3>Account Settings</h3>
+                    <button id="changePasswordBtn" class="btn btn-secondary">Change Password</button>
+                    <button id="logoutBtn" class="btn btn-danger">Logout</button>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Change Password Modal -->
+    <div id="passwordModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('passwordModal')">&times;</span>
+            <h2>Change Password</h2>
+            <form id="passwordForm">
+                <div class="form-group">
+                    <label for="currentPassword">Current Password:</label>
+                    <input type="password" id="currentPassword" required>
+                </div>
+                <div class="form-group">
+                    <label for="newPassword">New Password:</label>
+                    <input type="password" id="newPassword" required>
+                </div>
+                <div class="form-group">
+                    <label for="confirmPassword">Confirm Password:</label>
+                    <input type="password" id="confirmPassword" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Update Password</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="js/profile.js"></script>
+</body>
+</html>
