@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - LifeCare</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Montserrat:wght@600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+</head>
+<body>
+    <div class="dashboard-container">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <h2>LifeCare</h2>
+            </div>
+            <nav class="sidebar-nav">
+                <a href="#" class="nav-item active" data-section="overview">Dashboard</a>
+                <a href="#" class="nav-item" data-section="academic">Smart Academic Planner</a>
+                <a href="#" class="nav-item" data-section="health">Health & Wellness</a>
+                <a href="#" class="nav-item" data-section="mental">Mental Health</a>
+                <a href="#" class="nav-item" data-section="daily">Daily Life Tools</a>
+                <a href="#" class="nav-item" data-section="support">Student Support</a>
+                <a href="#" class="nav-item" data-section="profile">Profile</a>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Header -->
+            <header class="dashboard-header">
+                <div class="header-left">
+                    <h1>Dashboard</h1>
+                </div>
+                <div class="header-right">
+                    <div class="user-info">
+                        <span id="userGreeting">Hi, User</span>
+                        <span id="userRole" class="user-role"></span>
+                    </div>
+                    <a href="profile.html" class="btn btn-secondary">Profile</a>
+                    <button id="logoutBtn" class="btn btn-danger">Logout</button>
+                </div>
+            </header>
+
+            <!-- Main Sections -->
+            <div class="content-area">
+                <!-- Dashboard Overview -->
+                <section id="overview" class="content-section active">
+                    <h2>Dashboard Overview</h2>
+                    <div class="dashboard-grid">
+                        <!-- Smart Academic Planner Card -->
+                        <div class="dashboard-card" data-card="academic">
+                            <div class="card-icon">📚</div>
+                            <h3>Smart Academic Planner</h3>
+                            <p>Manage your schedules, tasks, and deadlines</p>
+                            <div class="card-stat">0 Tasks</div>
+                        </div>
+
+                        <!-- Health & Wellness Card -->
+                        <div class="dashboard-card" data-card="health">
+                            <div class="card-icon">💚</div>
+                            <h3>Health & Wellness</h3>
+                            <p>Track water, sleep, and physical activity</p>
+                            <div class="card-stat">0 Logs</div>
+                        </div>
+
+                        <!-- Mental Health Card -->
+                        <div class="dashboard-card" data-card="mental">
+                            <div class="card-icon">🧠</div>
+                            <h3>Mental Health</h3>
+                            <p>Monitor mood and stress levels</p>
+                            <div class="card-stat">No entries</div>
+                        </div>
+
+                        <!-- Daily Life Management Card -->
+                        <div class="dashboard-card" data-card="daily">
+                            <div class="card-icon">📋</div>
+                            <h3>Daily Life Management</h3>
+                            <p>Habits, budget, and emergency contacts</p>
+                            <div class="card-stat">0 Items</div>
+                        </div>
+
+                        <!-- Student Support Card -->
+                        <div class="dashboard-card" data-card="support">
+                            <div class="card-icon">🤝</div>
+                            <h3>Student Support</h3>
+                            <p>Community, encouragement, and insights</p>
+                            <div class="card-stat">Connected</div>
+                        </div>
+
+                        <!-- Budget/Expenses Card -->
+                        <div class="dashboard-card" data-card="budget">
+                            <div class="card-icon">💰</div>
+                            <h3>Budget & Expenses</h3>
+                            <p>Track your spending and budget</p>
+                            <div class="card-stat">$0.00</div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Smart Academic Planner Section -->
+                <section id="academic" class="content-section">
+                    <h2>Smart Academic Planner</h2>
+                    <div class="section-grid">
+                        <div class="feature-module">
+                            <h3>Class and Clinical Schedule</h3>
+                            <p>Organize and view your class and clinical schedules</p>
+                            <button class="btn btn-primary" onclick="openModal('scheduleModal')">View Schedule</button>
+                        </div>
+                        <div class="feature-module">
+                            <h3>Task and Assignment Tracker</h3>
+                            <p>Create and manage tasks with due dates and priorities</p>
+                            <button class="btn btn-primary" onclick="openModal('taskModal')">Add Task</button>
+                        </div>
+                        <div class="feature-module">
+                            <h3>Examination Countdown</h3>
+                            <p>Track days until your next exam</p>
+                            <button class="btn btn-primary" onclick="openModal('examModal')">Set Exam Date</button>
+                        </div>
+                        <div class="feature-module">
+                            <h3>Priority-Based To-Do Lists</h3>
+                            <p>Manage your tasks by priority level</p>
+                            <button class="btn btn-primary" onclick="openModal('todoModal')">Create To-Do</button>
+                        </div>
+                    </div>
+
+                    <!-- Task List -->
+                    <div class="data-display">
+                        <h3>Your Tasks</h3>
+                        <div id="taskList" class="task-list"></div>
+                    </div>
+                </section>
+
+                <!-- Health & Wellness Section -->
+                <section id="health" class="content-section">
+                    <h2>Health & Wellness Monitoring</h2>
+                    <div class="section-grid">
+                        <div class="feature-module">
+                            <h3>Water Intake Tracker</h3>
+                            <p>Track daily water intake in milliliters (ml)</p>
+                            <button class="btn btn-primary" onclick="openModal('waterModal')">Log Water</button>
+                        </div>
+                        <div class="feature-module">
+                            <h3>Sleep Monitoring</h3>
+                            <p>Track sleep patterns and duration in hours</p>
+                            <button class="btn btn-primary" onclick="openModal('sleepModal')">Log Sleep</button>
+                        </div>
+                        <div class="feature-module">
+                            <h3>Medication Reminders</h3>
+                            <p>Set and track medication reminders</p>
+                            <button class="btn btn-primary" onclick="openModal('medicationModal')">Add Medication</button>
+                        </div>
+                        <div class="feature-module">
+                            <h3>Meal and Nutrition Logs</h3>
+                            <p>Track meals and nutrition intake</p>
+                            <button class="btn btn-primary" onclick="openModal('mealModal')">Log Meal</button>
+                        </div>
+                        <div class="feature-module">
+                            <h3>Physical Activity Tracking</h3>
+                            <p>Log daily physical activities and duration</p>
+                            <button class="btn btn-primary" onclick="openModal('activityModal')">Log Activity</button>
+                        </div>
+                    </div>
+
+                    <!-- Health Logs Display -->
+                    <div class="data-display">
+                        <h3>Today's Health Logs</h3>
+                        <div id="healthLogs" class="logs-list"></div>
+                    </div>
+                </section>
+
+                <!-- Mental Health Section -->
+                <section id="mental" class="content-section">
+                    <h2>Mental Health & Stress Support</h2>
+                    <div class="section-grid">
+                        <div class="feature-module">
+                            <h3>Mood Tracker</h3>
+                            <p>Track and log your daily mood</p>
+                            <button class="btn btn-primary" onclick="openModal('moodModal')">Log Mood</button>
+                        </div>
+                        <div class="feature-module">
+                            <h3>Stress Level Check-in</h3>
+                            <p>Rate your stress levels from 1-10</p>
+                            <button class="btn btn-primary" onclick="openModal('stressModal')">Check Stress</button>
+                        </div>
+                        <div class="feature-module">
+                            <h3>Guided Breathing Exercises</h3>
+                            <p>Practice breathing and relaxation techniques</p>
+                            <button class="btn btn-primary" onclick="startBreathingExercise()">Start Exercise</button>
+                        </div>
+                        <div class="feature-module">
+                            <h3>Motivational Support</h3>
+                            <p>Get personalized wellness tips and motivation</p>
+                            <button class="btn btn-primary" onclick="getMotivation()">Get Motivation</button>
+                        </div>
+                        <div class="feature-module">
+                            <h3>Journaling Feature</h3>
+                            <p>Write and reflect on your day</p>
+                            <button class="btn btn-primary" onclick="openModal('journalModal')">Write Journal</button>
+                        </div>
+                    </div>
+
+                    <!-- Breathing Exercise Display -->
+                    <div id="breathingContainer" class="breathing-container" style="display:none;">
+                        <div class="breathing-circle"></div>
+                        <p id="breathingText">Inhale...</p>
+                    </div>
+
+                    <!-- Mental Health Logs -->
+                    <div class="data-display">
+                        <h3>Your Mental Health Logs</h3>
+                        <div id="mentalLogs" class="logs-list"></div>
+                    </div>
+                </section>
+
+                <!-- Daily Life Management Section -->
+                <section id="daily" class="content-section">
+                    <h2>Daily Life Management Tools</h2>
+                    <div class="section-grid">
+                        <div class="feature-module">
+                            <h3>Habit Tracker</h3>
+                            <p>Track daily habits and monitor progress</p>
+                            <button class="btn btn-primary" onclick="openModal('habitModal')">Add Habit</button>
+                        </div>
+                        <div class="feature-module">
+                            <h3>Budget and Expense Tracker</h3>
+                            <p>Set budgets and track your spending</p>
+                            <button class="btn btn-primary" onclick="openModal('budgetModal')">Add Expense</button>
+                        </div>
+                        <div class="feature-module">
+                            <h3>Personal Notes & Checklist</h3>
+                            <p>Duty-related checklists and personal reminders</p>
+                            <button class="btn btn-primary" onclick="openModal('notesModal')">Add Note</button>
+                        </div>
+                        <div class="feature-module">
+                            <h3>Emergency Contacts</h3>
+                            <p>Store important contacts and resources</p>
+                            <button class="btn btn-primary" onclick="openModal('contactModal')">Add Contact</button>
+                        </div>
+                    </div>
+
+                    <!-- Daily Life Logs -->
+                    <div class="data-display">
+                        <h3>Habits & Checklists</h3>
+                        <div id="dailyLogs" class="logs-list"></div>
+                    </div>
+                </section>
+
+                <!-- Student Support Section -->
+                <section id="support" class="content-section">
+                    <h2>Student Support System</h2>
+                    <div class="section-grid">
+                        <div class="feature-module">
+                            <h3>Peer Support & Community</h3>
+                            <p>Connect with peers and join communities</p>
+                            <button class="btn btn-primary" onclick="openModal('peerModal')">Find Peers</button>
+                        </div>
+                        <div class="feature-module">
+                            <h3>Academic Encouragement</h3>
+                            <p>Set goals and receive academic motivation</p>
+                            <button class="btn btn-primary" onclick="getAcademicMotivation()">Get Encouraged</button>
+                        </div>
+                        <div class="feature-module">
+                            <h3>Self-Care Recommendations</h3>
+                            <p>Personalized self-care tips based on stress</p>
+                            <button class="btn btn-primary" onclick="getSelfCareRecommendations()">Get Tips</button>
+                        </div>
+                        <div class="feature-module">
+                            <h3>Productivity Insights</h3>
+                            <p>Track productivity patterns and get insights</p>
+                            <button class="btn btn-primary" onclick="getProductivityInsights()">View Insights</button>
+                        </div>
+                    </div>
+
+                    <!-- Support Messages -->
+                    <div class="data-display">
+                        <h3>Your Support Messages</h3>
+                        <div id="supportMessages" class="logs-list"></div>
+                    </div>
+                </section>
+
+                <!-- Profile Section -->
+                <section id="profile" class="content-section">
+                    <h2>User Profile</h2>
+                    <div class="profile-container">
+                        <div class="profile-form">
+                            <div class="form-group">
+                                <label for="profileNickname">Nickname:</label>
+                                <input type="text" id="profileNickname" placeholder="Enter your nickname">
+                            </div>
+                            <div class="form-group">
+                                <label for="profileEmail">Email:</label>
+                                <input type="email" id="profileEmail" placeholder="Enter your email">
+                            </div>
+                            <div class="form-group">
+                                <label for="profileRole">Role:</label>
+                                <input type="text" id="profileRole" readonly>
+                            </div>
+                            <button class="btn btn-primary" onclick="saveProfile()">Save Changes</button>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </main>
+    </div>
+
+    <!-- Modals -->
+    <!-- Task Modal -->
+    <div id="taskModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('taskModal')">&times;</span>
+            <h2>Add Task</h2>
+            <form id="taskForm">
+                <div class="form-group">
+                    <label for="taskTitle">Task Title:</label>
+                    <input type="text" id="taskTitle" required>
+                </div>
+                <div class="form-group">
+                    <label for="taskDueDate">Due Date:</label>
+                    <input type="date" id="taskDueDate" required>
+                </div>
+                <div class="form-group">
+                    <label for="taskPriority">Priority:</label>
+                    <select id="taskPriority" required>
+                        <option value="Low">Low</option>
+                        <option value="Medium">Medium</option>
+                        <option value="High">High</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-primary">Add Task</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Water Intake Modal -->
+    <div id="waterModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('waterModal')">&times;</span>
+            <h2>Log Water Intake</h2>
+            <form id="waterForm">
+                <div class="form-group">
+                    <label for="waterAmount">Amount (ml):</label>
+                    <input type="number" id="waterAmount" required min="0">
+                </div>
+                <div class="form-group">
+                    <label for="waterTime">Time:</label>
+                    <input type="time" id="waterTime" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Log Water</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Sleep Modal -->
+    <div id="sleepModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('sleepModal')">&times;</span>
+            <h2>Log Sleep</h2>
+            <form id="sleepForm">
+                <div class="form-group">
+                    <label for="sleepHours">Hours Slept:</label>
+                    <input type="number" id="sleepHours" required min="0" max="24" step="0.5">
+                </div>
+                <div class="form-group">
+                    <label for="sleepDate">Date:</label>
+                    <input type="date" id="sleepDate" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Log Sleep</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Medication Modal -->
+    <div id="medicationModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('medicationModal')">&times;</span>
+            <h2>Add Medication Reminder</h2>
+            <form id="medicationForm">
+                <div class="form-group">
+                    <label for="medicationName">Medication Name:</label>
+                    <input type="text" id="medicationName" required>
+                </div>
+                <div class="form-group">
+                    <label for="medicationDose">Dose:</label>
+                    <input type="text" id="medicationDose" required placeholder="e.g., 500mg">
+                </div>
+                <div class="form-group">
+                    <label for="medicationTime">Time:</label>
+                    <input type="time" id="medicationTime" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Add Reminder</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Meal Modal -->
+    <div id="mealModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('mealModal')">&times;</span>
+            <h2>Log Meal</h2>
+            <form id="mealForm">
+                <div class="form-group">
+                    <label for="mealName">Meal Name:</label>
+                    <input type="text" id="mealName" required>
+                </div>
+                <div class="form-group">
+                    <label for="mealCalories">Calories:</label>
+                    <input type="number" id="mealCalories" required min="0">
+                </div>
+                <div class="form-group">
+                    <label for="mealTime">Time:</label>
+                    <input type="time" id="mealTime" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Log Meal</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Activity Modal -->
+    <div id="activityModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('activityModal')">&times;</span>
+            <h2>Log Physical Activity</h2>
+            <form id="activityForm">
+                <div class="form-group">
+                    <label for="activityType">Activity Type:</label>
+                    <input type="text" id="activityType" required placeholder="e.g., Jogging, Swimming">
+                </div>
+                <div class="form-group">
+                    <label for="activityDuration">Duration (minutes):</label>
+                    <input type="number" id="activityDuration" required min="0">
+                </div>
+                <div class="form-group">
+                    <label for="activityDate">Date:</label>
+                    <input type="date" id="activityDate" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Log Activity</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Mood Modal -->
+    <div id="moodModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('moodModal')">&times;</span>
+            <h2>Log Mood</h2>
+            <form id="moodForm">
+                <div class="form-group">
+                    <label for="moodFeeling">How are you feeling?</label>
+                    <select id="moodFeeling" required>
+                        <option value="">Select mood</option>
+                        <option value="Happy">Happy 😊</option>
+                        <option value="Sad">Sad 😢</option>
+                        <option value="Stressed">Stressed 😰</option>
+                        <option value="Calm">Calm 😌</option>
+                        <option value="Excited">Excited 😃</option>
+                        <option value="Tired">Tired 😴</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="moodNotes">Notes (optional):</label>
+                    <textarea id="moodNotes" rows="3"></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Log Mood</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Stress Modal -->
+    <div id="stressModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('stressModal')">&times;</span>
+            <h2>Check Stress Level</h2>
+            <form id="stressForm">
+                <div class="form-group">
+                    <label for="stressLevel">Stress Level (1-10):</label>
+                    <input type="range" id="stressLevel" min="1" max="10" value="5">
+                    <span id="stressValue">5</span>
+                </div>
+                <div class="form-group">
+                    <label for="stressReason">What's causing the stress?</label>
+                    <textarea id="stressReason" rows="3"></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Log Stress</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Journal Modal -->
+    <div id="journalModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('journalModal')">&times;</span>
+            <h2>Journal Entry</h2>
+            <form id="journalForm">
+                <div class="form-group">
+                    <label for="journalPrompt">Daily Prompt: What made you stressed today? One thing you're grateful for?</label>
+                    <textarea id="journalText" rows="5" required placeholder="Write your thoughts here..."></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Save Entry</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Habit Modal -->
+    <div id="habitModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('habitModal')">&times;</span>
+            <h2>Add Habit</h2>
+            <form id="habitForm">
+                <div class="form-group">
+                    <label for="habitName">Habit Name:</label>
+                    <input type="text" id="habitName" required placeholder="e.g., Exercise for 30 minutes">
+                </div>
+                <div class="form-group">
+                    <label for="habitFrequency">Frequency:</label>
+                    <select id="habitFrequency" required>
+                        <option value="Daily">Daily</option>
+                        <option value="Weekly">Weekly</option>
+                        <option value="Monthly">Monthly</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-primary">Add Habit</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Budget Modal -->
+    <div id="budgetModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('budgetModal')">&times;</span>
+            <h2>Add Expense</h2>
+            <form id="budgetForm">
+                <div class="form-group">
+                    <label for="expenseCategory">Category:</label>
+                    <select id="expenseCategory" required>
+                        <option value="">Select category</option>
+                        <option value="Groceries">Groceries</option>
+                        <option value="Transportation">Transportation</option>
+                        <option value="Leisure">Leisure</option>
+                        <option value="Utilities">Utilities</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="expenseAmount">Amount ($):</label>
+                    <input type="number" id="expenseAmount" required min="0" step="0.01">
+                </div>
+                <div class="form-group">
+                    <label for="expenseDate">Date:</label>
+                    <input type="date" id="expenseDate" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Add Expense</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Notes Modal -->
+    <div id="notesModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('notesModal')">&times;</span>
+            <h2>Add Note or Checklist Item</h2>
+            <form id="notesForm">
+                <div class="form-group">
+                    <label for="noteTitle">Title:</label>
+                    <input type="text" id="noteTitle" required>
+                </div>
+                <div class="form-group">
+                    <label for="noteContent">Content:</label>
+                    <textarea id="noteContent" rows="4" required></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Save Note</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Contact Modal -->
+    <div id="contactModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('contactModal')">&times;</span>
+            <h2>Add Emergency Contact</h2>
+            <form id="contactForm">
+                <div class="form-group">
+                    <label for="contactName">Name:</label>
+                    <input type="text" id="contactName" required>
+                </div>
+                <div class="form-group">
+                    <label for="contactRelation">Relationship:</label>
+                    <input type="text" id="contactRelation" required placeholder="e.g., Mother, Doctor">
+                </div>
+                <div class="form-group">
+                    <label for="contactPhone">Phone:</label>
+                    <input type="tel" id="contactPhone" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Add Contact</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Peer Modal -->
+    <div id="peerModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('peerModal')">&times;</span>
+            <h2>Find Peers & Join Communities</h2>
+            <form id="peerForm">
+                <div class="form-group">
+                    <label for="peerInterest">Interest/Topic:</label>
+                    <input type="text" id="peerInterest" required placeholder="e.g., Study Group, Mental Health Support">
+                </div>
+                <div class="form-group">
+                    <label for="peerGoal">Goal:</label>
+                    <textarea id="peerGoal" rows="3" placeholder="What do you want to achieve with peers?"></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Find Peers</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Schedule Modal -->
+    <div id="scheduleModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('scheduleModal')">&times;</span>
+            <h2>Your Schedule</h2>
+            <p>Schedule calendar and list view will be displayed here.</p>
+        </div>
+    </div>
+
+    <!-- Exam Modal -->
+    <div id="examModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('examModal')">&times;</span>
+            <h2>Set Exam Date</h2>
+            <form id="examForm">
+                <div class="form-group">
+                    <label for="examSubject">Subject:</label>
+                    <input type="text" id="examSubject" required>
+                </div>
+                <div class="form-group">
+                    <label for="examDate">Exam Date & Time:</label>
+                    <input type="datetime-local" id="examDate" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Set Countdown</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- To-Do Modal -->
+    <div id="todoModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('todoModal')">&times;</span>
+            <h2>Create To-Do Item</h2>
+            <form id="todoForm">
+                <div class="form-group">
+                    <label for="todoItem">To-Do Item:</label>
+                    <input type="text" id="todoItem" required>
+                </div>
+                <div class="form-group">
+                    <label for="todoPriority">Priority:</label>
+                    <select id="todoPriority" required>
+                        <option value="Low">Low</option>
+                        <option value="Medium">Medium</option>
+                        <option value="High">High</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-primary">Add To-Do</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="js/dashboard.js"></script>
+</body>
+</html>
