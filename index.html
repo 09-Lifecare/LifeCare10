@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LifeCare - Student Health & Life Management</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Montserrat:wght@600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <div class="navbar-logo">
+                <h1>LifeCare</h1>
+            </div>
+            <div class="menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul class="navbar-menu">
+                <li><a href="#home" class="nav-link active">Home</a></li>
+                <li><a href="#features" class="nav-link">Features</a></li>
+                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+                <li><a href="#" id="logoutBtn" class="nav-link logout-btn" style="display:none;">Logout</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1 class="hero-title">LifeCare</h1>
+            <p class="hero-tagline">Stay healthy. Stay organized. Stay prepared. Stay in control.</p>
+            <div class="hero-buttons">
+                <button class="btn btn-primary" id="getStartedBtn">Get Started</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- What is LifeCare Section -->
+    <section class="what-is-lifecare">
+        <div class="container">
+            <h2>What is LifeCare?</h2>
+            <p>LifeCare is an all-in-one student companion that helps students organize their schedules, track their health, manage stress, and stay productive every day.</p>
+        </div>
+    </section>
+
+    <!-- Core Features Section -->
+    <section id="features" class="features">
+        <div class="container">
+            <h2>Core Features of LifeCare</h2>
+            <div class="features-grid">
+                <!-- Smart Academic Planner -->
+                <div class="feature-card">
+                    <h3>Smart Academic Planner</h3>
+                    <p>Organize your class and clinical schedules, track tasks and assignments, set deadline reminders, keep an eye on examination countdowns, and manage your workload with priority-based to-do lists.</p>
+                </div>
+
+                <!-- Health and Wellness Monitoring -->
+                <div class="feature-card">
+                    <h3>Health and Wellness Monitoring</h3>
+                    <p>Track your water intake, monitor your sleep patterns, set medication reminders, log your meals and nutrition, and stay active with physical activity tracking.</p>
+                </div>
+
+                <!-- Mental Health and Stress Support -->
+                <div class="feature-card">
+                    <h3>Mental Health and Stress Support</h3>
+                    <p>Track your mood, check your stress levels, practice guided breathing and relaxation exercises, get motivational support and wellness tips, and reflect on your day with a journaling feature.</p>
+                </div>
+
+                <!-- Daily Life Management Tools -->
+                <div class="feature-card">
+                    <h3>Daily Life Management Tools</h3>
+                    <p>Stay on track with a habit tracker, manage your budget and expenses, keep personal notes and to-do lists, and store emergency contacts and quick-access resources.</p>
+                </div>
+
+                <!-- Student Support System -->
+                <div class="feature-card">
+                    <h3>Student Support System</h3>
+                    <p>Connect with peer support through the community feature, receive academic encouragement, get self-care recommendations based on stress levels, and use personalized reminders and productivity insights to optimize your day.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <h2>About LifeCare</h2>
+            
+            <div class="about-content">
+                <div class="about-item">
+                    <h3>LifeCare: A Student Health & Life Management Companion</h3>
+                    <p>LifeCare is a comprehensive mobile application designed to help students manage their academic responsibilities, health, wellness, and daily routines in one place. Targeted particularly at nursing students and those in demanding academic programs, LifeCare provides tools to organize tasks, track health, monitor mental well-being, and offer emotional support. With its integrated platform, LifeCare empowers students to balance academic excellence with personal well-being.</p>
+                </div>
+
+                <div class="about-item">
+                    <h3>Mission</h3>
+                    <p>Our mission is to empower students to succeed academically, emotionally, and physically with LifeCare, an all-in-one digital companion. It helps students manage their academic workload, track physical and mental health, and maintain a balanced lifestyle through task management, wellness monitoring, emotional support, and self-care recommendations. Our goal is to enhance productivity, well-being, and academic success.</p>
+                </div>
+
+                <div class="about-item">
+                    <h3>Vision</h3>
+                    <p>We envision a future where students can effortlessly balance academic responsibilities, health, and personal life. LifeCare aims to be the leading tool that helps students manage tasks, prioritize self-care, and achieve their goals. Our vision is to build a community of students who are mentally healthy, physically active, and academically successful by providing the tools needed for success in both their studies and personal lives.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2>Contact Us</h2>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <h3>Email</h3>
+                    <p><a href="mailto:lifecare000222@gmail.com">lifecare000222@gmail.com</a></p>
+                </div>
+                <div class="contact-item">
+                    <h3>Phone</h3>
+                    <p><a href="tel:09063088746">09063088746</a></p>
+                </div>
+                <div class="contact-item">
+                    <h3>Location</h3>
+                    <p>Quezon City, Philippines</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Login Modal -->
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Login to LifeCare</h2>
+            <form id="loginForm">
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required placeholder="Enter your email">
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" name="password" required placeholder="Enter your password">
+                </div>
+
+                <div class="form-group">
+                    <label for="role">Role:</label>
+                    <select id="role" name="role" required>
+                        <option value="">Select your role</option>
+                        <option value="Nursing Student">Nursing Student</option>
+                        <option value="Student">Student</option>
+                        <option value="Other Professional">Other Professional</option>
+                    </select>
+                </div>
+
+                <div id="errorMessage" class="error-message"></div>
+
+                <button type="submit" class="btn btn-primary">Login</button>
+            </form>
+
+            <p class="demo-credentials">
+                <strong>Demo Credentials:</strong><br>
+                Email: user@lifecare.com<br>
+                Password: 123456<br>
+                Role: Nursing Student
+            </p>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2026 LifeCare. All rights reserved.</p>
+    </footer>
+
+    <script src="js/auth.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
